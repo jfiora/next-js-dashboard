@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 export const LoginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
+    const [error, setError] = useState(false);
 
     const router = useRouter();
 
@@ -22,7 +22,7 @@ export const LoginForm = () => {
             });
 
             if (res.error) {
-                setError('invalid credentials');
+                setError(true);
                 return;
             }
 
@@ -33,35 +33,50 @@ export const LoginForm = () => {
     };
 
     return (
-        <div className='grid place-items-center h-screen'>
-            <div className='shadow-lg p-5 rounded-lg border-t-4 '>
-                <h1 className='text-xl font-bold my-4'>Enter credentials</h1>
-                <form onSubmit={handleSubmit} className='flex flex-col gap-3'>
+        <div className=''>
+            <span className='fw-bold fs-39 mb-5'>Hola!</span>
+            <form
+                onSubmit={handleSubmit}
+                className='d-flex f-column gap-3 w-form mt-5'
+            >
+                <div className='d-flex f-column gap-1'>
+                    <label htmlFor='email'>Email</label>
                     <input
+                        className='br-2 border-gray-50 p-3'
                         onChange={(e) => setEmail(e.target.value)}
                         type='text'
                         placeholder='Email'
                     />
+                </div>
+                <div className='d-flex f-column gap-1'>
+                    <label htmlFor='password'>Contraseña</label>
                     <input
+                        className='br-2 border-gray-50 p-3'
                         onChange={(e) => setPassword(e.target.value)}
                         type='password'
-                        placeholder='Password'
+                        placeholder='Contraseña'
                     />
-                    <button className='bg-green-600 text-white font-bold cursor-pointer px-6 py-2 rounded'>
-                        Login
+                </div>
+                {error ? (
+                    <span className='text-red'>
+                        ¡Ups! Parece que los datos que ingresaste son
+                        incorrectos.
+                    </span>
+                ) : null}
+                <div className='d-flex gap-5 align-center justify-start'>
+                    <button className='border-none text-white btn-login br-3 bg-purple-100 fs-16 fw-semibold cursor-pointer'>
+                        Ingresar
                     </button>
-                </form>
-
-                {error ?? (
-                    <div className='bg-red-500 text-white w-fit text-sm py-1 px-3 rounded-md mt-2'>
-                        {error}
-                    </div>
-                )}
-                <Link className='text-sm mt-3 text-right' href={'/register'}>
-                    Don&apos;t have an account?{' '}
-                    <span className='underline'>Register</span>
-                </Link>
-            </div>
+                    <Link
+                        className='no-underline text-black'
+                        href={'/register'}
+                    >
+                        <span className='fw-semibold fs-14'>
+                            No tengo cuenta
+                        </span>
+                    </Link>
+                </div>
+            </form>
         </div>
     );
 };
