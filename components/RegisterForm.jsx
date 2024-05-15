@@ -8,7 +8,8 @@ export const RegisterForm = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [error, setError] = useState(false);
 
     const router = useRouter();
 
@@ -16,7 +17,11 @@ export const RegisterForm = () => {
         e.preventDefault();
 
         if (!name || !email || !password) {
-            setError('All fields are necessary');
+            setError('Todos los campos son necesarios');
+            return;
+        }
+        if (password !== confirmPassword) {
+            setError('Contraseñas no coinciden');
             return;
         }
 
@@ -34,7 +39,7 @@ export const RegisterForm = () => {
             const { user } = await userRes.json();
 
             if (user) {
-                setError('User already exists');
+                setError('Usuario ya existe');
                 return;
             }
 
@@ -63,41 +68,62 @@ export const RegisterForm = () => {
     };
 
     return (
-        <div className='grid place-items-center h-screen'>
-            <div className='shadow-lg p-5 rounded-lg border-t-4 '>
-                <h1 className='text-xl font-bold my-4'>Register</h1>
-                <form onSubmit={handleSubmit} className='flex flex-col gap-3'>
+        <div className=''>
+            <span className='fw-bold fs-39 mb-5'>Bienvenido!</span>
+            <form
+                onSubmit={handleSubmit}
+                className='d-flex f-column gap-3 w-form mt-5'
+            >
+                <div className='d-flex f-column gap-1'>
+                    <label htmlFor='FullName'>Nombre completo</label>{' '}
                     <input
+                        className='br-2 border-gray-50 p-3'
                         type='text'
-                        placeholder='FullName'
+                        placeholder='Nombre completo'
                         onChange={(e) => setName(e.target.value)}
                     />
+                </div>
+                <div className='d-flex f-column gap-1'>
+                    <label htmlFor='email'>Email</label>
                     <input
+                        className='br-2 border-gray-50 p-3'
+                        onChange={(e) => setEmail(e.target.value)}
                         type='text'
                         placeholder='Email'
-                        onChange={(e) => setEmail(e.target.value)}
                     />
+                </div>
+                <div className='d-flex f-column gap-1'>
+                    <label htmlFor='password'>Contraseña</label>
                     <input
-                        type='password'
-                        placeholder='Password'
+                        className='br-2 border-gray-50 p-3'
                         onChange={(e) => setPassword(e.target.value)}
+                        type='password'
+                        placeholder='Contraseña'
                     />
-                    <button className='bg-green-600 text-white font-bold cursor-pointer px-6 py-2 rounded'>
-                        Register
+                </div>
+                <div className='d-flex f-column gap-1'>
+                    <label htmlFor='confirmPassword'>
+                        Confirmar contraseña
+                    </label>
+                    <input
+                        className='br-2 border-gray-50 p-3'
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        type='password'
+                        placeholder='Confirmar contraseña'
+                    />
+                </div>
+                {error ? <span className='text-red'>{error}</span> : null}
+                <div className='d-flex gap-5 align-center justify-start'>
+                    <button className='border-none text-white btn-login br-3 bg-purple-100 fs-16 fw-semibold cursor-pointer'>
+                        Crear cuenta
                     </button>
-                </form>
-
-                {error && (
-                    <div className='bg-red-500 text-white w-fit text-sm py-1 px-3 rounded-md mt-2'>
-                        {error}
-                    </div>
-                )}
-
-                <Link className='text-sm mt-3 text-right' href={'/'}>
-                    Already have an account?{' '}
-                    <span className='underline'>Login</span>
-                </Link>
-            </div>
+                    <Link className='no-underline text-black' href={'/'}>
+                        <span className='fw-semibold fs-14'>
+                            Ya tengo cuenta
+                        </span>
+                    </Link>
+                </div>
+            </form>
         </div>
     );
 };
