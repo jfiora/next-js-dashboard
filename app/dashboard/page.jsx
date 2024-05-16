@@ -7,7 +7,12 @@ export default function Dashboard() {
             <div className=''>
                 <Sidebar />
             </div>
-            <div className='w-100 h-100 bg-default p-6'>Dashboard</div>
+            <div className='w-100 h-100 bg-default p-4 pt-6'>
+                <UserInfo />
+                <div className='p-5'>
+                    <div className='fs-16 fw-bold'>Dashboard</div>
+                </div>
+            </div>
         </section>
     );
 }
