@@ -2,22 +2,12 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { signIn } from 'next-auth/react';
-// import { useRouter } from 'next/navigation';
-import { useNavigation } from 'next/navigation';
 
 export const LoginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
- 
-    useEffect(() => {
-        if (isLoggedIn) {
-          navigation.push('/dashboard');
-        }
-      }, [isLoggedIn]);
-    // const router = useRouter();
-    const navigation = useNavigation();
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -33,7 +23,6 @@ export const LoginForm = () => {
                 setError(true);
                 return;
             }
-            setIsLoggedIn(true);
         } catch (err) {
             console.log(err);
         }

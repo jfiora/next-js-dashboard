@@ -38,7 +38,11 @@ export const authOptions = {
     pages: {
         signIn: '/',
     },
-    signIn: false,
+    callbacks: {
+        async signIn({user}) {
+            return `/dashboard`;
+        }
+    }
 };
 
 const handler = NextAuth(authOptions);
