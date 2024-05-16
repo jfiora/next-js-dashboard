@@ -6,7 +6,7 @@ import { signOut } from 'next-auth/react';
 export const SignOutButton = () => {
     return (
         <button
-            onClick={() => signOut()}
+            onClick={() => signOut({ callbackUrl: '/' })}
             className='sidebar-btn-width bg-transparent border-none cursor-pointer d-flex gap-3'
         >
             <FontAwesomeIcon icon={faArrowRightFromBracket} className='fs-16' />{' '}
