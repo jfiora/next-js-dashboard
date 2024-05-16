@@ -39,7 +39,7 @@ export const RegisterForm = () => {
             const { user } = await userRes.json();
 
             if (user) {
-                setError('Usuario ya existe');
+                setError('U');
                 return;
             }
 
@@ -58,7 +58,7 @@ export const RegisterForm = () => {
             if (res.ok) {
                 const form = e.target;
                 form.reset();
-                router.replace('/dashboard');
+                router.push('/');
             } else {
                 console.log('user registration failed');
             }
