@@ -224,6 +224,14 @@
     background-color: var(--purple-30);
 }
 
+.bg-white {
+    background-color: white;
+}
+
+.bg-black {
+    background-color: black;
+}
+
 .bg-transparent {
     background-color: transparent;
 }
