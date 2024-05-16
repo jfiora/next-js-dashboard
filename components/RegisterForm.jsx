@@ -58,7 +58,7 @@ export const RegisterForm = () => {
             if (res.ok) {
                 const form = e.target;
                 form.reset();
-                router.push('/');
+                router.replace('/dashboard');
             } else {
                 console.log('user registration failed');
             }
