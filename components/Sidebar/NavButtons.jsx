@@ -20,7 +20,7 @@ export const NavButtons = () => {
             {IsActive('/dashboard') ? (
                 <Link
                     href={'/dashboard'}
-                    className='no-underline p-3 d-flex align-center gap-3 bg-black br-2'
+                    className='no-underline p-4 d-flex align-center gap-3 bg-black br-2'
                 >
                     <Image
                         src={iconTableroActive}
@@ -33,7 +33,7 @@ export const NavButtons = () => {
             ) : (
                 <Link
                     href={'/dashboard'}
-                    className='no-underline p-3 d-flex align-center gap-3 bg-black br-2'
+                    className='no-underline p-4 d-flex align-center gap-3 bg-black br-2'
                 >
                     <Image
                         src={iconTableroInactive}
@@ -47,7 +47,7 @@ export const NavButtons = () => {
             {IsActive('/calendar') ? (
                 <Link
                     href={'/calendar'}
-                    className='no-underline p-3 d-flex align-center gap-3'
+                    className='no-underline p-4 d-flex align-center gap-3'
                 >
                     <Image
                         src={iconCalendarActive}
@@ -60,7 +60,7 @@ export const NavButtons = () => {
             ) : (
                 <Link
                     href={'/calendar'}
-                    className='no-underline p-3 d-flex align-center gap-3'
+                    className='no-underline p-4 d-flex align-center gap-3'
                 >
                     <Image
                         src={iconCalendarInactive}
@@ -74,7 +74,7 @@ export const NavButtons = () => {
             {IsActive('/contacts') ? (
                 <Link
                     href={'/contacts'}
-                    className='no-underline p-3 d-flex align-center gap-3 bg-black br-2'
+                    className='no-underline p-4 d-flex align-center gap-3 bg-black br-2'
                 >
                     <Image
                         src={iconContactsActive}
@@ -87,7 +87,7 @@ export const NavButtons = () => {
             ) : (
                 <Link
                     href={'/contacts'}
-                    className='no-underline p-3 d-flex align-center gap-3'
+                    className='no-underline p-4 d-flex align-center gap-3'
                 >
                     <Image
                         src={iconContactsInactive}
