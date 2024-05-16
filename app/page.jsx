@@ -1,16 +1,17 @@
 import { LoginForm } from '@/components/LoginForm';
 import { getServerSession } from 'next-auth';
 import { authOptions } from './api/auth/[...nextauth]/route';
-import { redirect } from 'next/navigation';
+import { useNavigation } from 'next/navigation';
 import imageLogo from '../public/logo_large.png';
 import imageBg from '../public/login_img.png';
 import Image from 'next/image';
 
 export default async function Home() {
     const session = await getServerSession(authOptions);
-
+    const navigation = useNavigation()
+    console.log(session);
     if (session) {
-        redirect('dashboard');
+        navigation.push('dashboard');
     }
     return (
         <div>
