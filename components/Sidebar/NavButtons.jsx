@@ -33,7 +33,7 @@ export const NavButtons = () => {
             ) : (
                 <Link
                     href={'/dashboard'}
-                    className='no-underline p-4 d-flex align-center gap-3 bg-black br-2'
+                    className='no-underline p-4 d-flex align-center gap-3'
                 >
                     <Image
                         src={iconTableroInactive}
@@ -47,7 +47,7 @@ export const NavButtons = () => {
             {IsActive('/calendar') ? (
                 <Link
                     href={'/calendar'}
-                    className='no-underline p-4 d-flex align-center gap-3'
+                    className='no-underline p-4 d-flex align-center gap-3 bg-black br-2'
                 >
                     <Image
                         src={iconCalendarActive}
