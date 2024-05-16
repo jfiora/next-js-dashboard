@@ -1,18 +1,18 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import imageLogo from '../../public/logo_large.png';
+import { signOut } from 'next-auth/react';
+import Image from 'next/image';
+import { SignOutButton } from './SignOutButton';
+import { ReserveButton } from './ReserveButton';
 
 export const Sidebar = () => {
     return (
-        <section className='bg-sidemenu'>
-            <div>logo</div>
+        <section className='bg-sidemenu h-85 sidemenu-width p-6 d-flex f-column justify-between'>
+            <div className='d-flex f-column gap-6'>
+                <Image src={imageLogo} alt='Logo' width={93} height={45} />
+                <ReserveButton />
+            </div>
             <div>
-                <div>
-                    <FontAwesomeIcon
-                        icon={faArrowRightFromBracket}
-                        className='fs-13'
-                    />{' '}
-                    <span className='fs-13'>Cerrar Sesión</span>
-                </div>
+                <SignOutButton />
             </div>
         </section>
     );

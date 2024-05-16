@@ -4,10 +4,10 @@ import { UserInfo } from '@/components/UserInfo';
 export default function Dashboard() {
     return (
         <section className='d-flex vh-100'>
-            <div className='w-15 h-100'>
+            <div className=''>
                 <Sidebar />
             </div>
-            <div className='w-85 h-100 bg-default'>
+            <div className='w-100 h-100 bg-default p-6'>
                 <UserInfo />
             </div>
         </section>
