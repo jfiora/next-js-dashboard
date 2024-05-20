@@ -3,15 +3,15 @@ import mongoose, { Schema, models } from 'mongoose';
 const bookingSchema = new Schema(
     {
         tenantId: {
-            type: Int32Array,
+            type: mongoose.ObjectId,
             required: true
         },
         contactId: {
-            type: Int32Array,
+            type: mongoose.ObjectId,
             required: true,
         },
         duration: {
-            type: Int32Array,
+            type: Number,
             required: true,
         },
         startTime: {
@@ -19,11 +19,11 @@ const bookingSchema = new Schema(
             required: true
         },
         courtId: {
-            type: Int32Array,
+            type: mongoose.ObjectId,
             required: true
         },
         createdBy: {
-            type: Int32Array,
+            type: mongoose.ObjectId,
             required: true
         },
         bookingType: {

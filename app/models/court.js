@@ -3,7 +3,7 @@ import mongoose, { Schema, models } from 'mongoose';
 const courtSchema = new Schema(
     {
         tenantId: {
-            type: Int32Array,
+            type: mongoose.ObjectId,
             required: true
         },
         sport: {
@@ -11,7 +11,7 @@ const courtSchema = new Schema(
             required: true,
         },
         price: {
-            type: Float32Array,
+            type: Number,
             required: true,
         },
         available: {

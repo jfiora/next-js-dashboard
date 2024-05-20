@@ -2,6 +2,10 @@ import mongoose, { Schema, models } from 'mongoose';
 
 const userSchema = new Schema(
     {
+        tenantId: {
+            type: mongoose.ObjectId,
+            required: true
+        },
         name: {
             type: String,
             required: true,

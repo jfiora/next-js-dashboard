@@ -3,7 +3,7 @@ import mongoose, { Schema, models } from 'mongoose';
 const contactSchema = new Schema(
     {
         tenantId: {
-            type: Int32Array,
+            type: String,
             required: true
         },
         firstName: {

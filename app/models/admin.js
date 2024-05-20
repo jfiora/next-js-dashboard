@@ -3,7 +3,7 @@ import mongoose, { Schema, models } from 'mongoose';
 const adminSchema = new Schema(
     {
         tenantId: {
-            type: Int32Array,
+            type: mongoose.ObjectId,
             required: true
         },
         name: {
