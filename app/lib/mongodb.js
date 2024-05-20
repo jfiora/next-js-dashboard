@@ -1,10 +1,19 @@
 import mongoose from 'mongoose';
 
-export const connectMongoDb = async () => {
-    try {
-        await mongoose.connect(process.env.MONGODB_URI);
-        console.log('connected');
-    } catch (err) {
-        console.log(err);
+let cachedDb = null;
+
+export async function connectMongoDb() {
+    if (cachedDb) {
+        return cachedDb;
     }
-};
+
+    try {
+        const db = await mongoose.connect(process.env.MONGODB_URI);
+        console.log("Connection to DeportBot db successfull");
+        cachedDb = db;
+        return db;
+    } catch (error) {
+        console.error('Error trying to connect to db: ', error);
+        throw error;
+    }
+}
