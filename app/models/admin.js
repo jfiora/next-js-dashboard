@@ -1,6 +1,6 @@
 import mongoose, { Schema, models } from 'mongoose';
 
-const userSchema = new Schema(
+const adminSchema = new Schema(
     {
         tenantId: {
             type: mongoose.ObjectId,
@@ -18,10 +18,22 @@ const userSchema = new Schema(
             type: String,
             required: true,
         },
+        phone: {
+            type: String,
+            required: true
+        },
+        address: {
+            type: String,
+            required: false
+        },
+        picture: {
+            type: String,
+            required: false
+        }
     },
     { timestamps: true }
 );
 
-const User = models.User || mongoose.model('User', userSchema);
+const Admin = models.Admin || mongoose.model('Admin', adminSchema);
 
-export default User;
+export default Admin;

@@ -1,27 +1,27 @@
 import mongoose, { Schema, models } from 'mongoose';
 
-const userSchema = new Schema(
+const contactSchema = new Schema(
     {
         tenantId: {
-            type: mongoose.ObjectId,
+            type: String,
             required: true
         },
-        name: {
+        firstName: {
             type: String,
             required: true,
         },
-        email: {
+        lastName: {
             type: String,
             required: true,
         },
-        password: {
+        phone: {
             type: String,
-            required: true,
-        },
+            required: true
+        }
     },
     { timestamps: true }
 );
 
-const User = models.User || mongoose.model('User', userSchema);
+const Contact = models.Contact || mongoose.model('Contact', contactSchema);
 
-export default User;
+export default Contact;
