@@ -25,17 +25,17 @@ export async function POST(req, res) {
         let contact = null;
         const { tenantId } = res.params
         const { firstName, lastName, phone } = await req.json();
-        const existingContact = await Contact.findOne({ tenantId, phone });
-        if (!existingContact) {
-            contact = await Contact.create({ tenantId, firstName, lastName, phone });
-            if (contact)
-                return NextResponse.json({ contact }, { status: 201 });
 
-            else
-                throw new Error("Contact not created")
-        }
-        return NextResponse.json({ message: `Contact already exists` });
+        const existingContact = await Contact.findOne({ tenantId, phone });
+
+        if (existingContact)
+            throw new Error("Contact already exists")
+
+        contact = await Contact.create({ tenantId, firstName, lastName, phone });
+
+        return NextResponse.json({ contact }, { status: 201 });
+        
     } catch (err) {
-        return res.status(500).json({ message: err.message || "Server error" });
+        return NextResponse.json({ message: err.message || "Server error" });
     }
 }
