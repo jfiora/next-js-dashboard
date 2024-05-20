@@ -2,6 +2,17 @@ import { connectMongoDb } from '@/app/lib/mongodb';
 import Tenant from '@/app/models/tenant';
 import { NextResponse } from 'next/server';
 
+// GET ALL TENANTS
+export async function GET(req, res) {
+    try {
+        await connectMongoDb();
+        const tenants = await Tenant.find({});
+        return NextResponse.json({ tenants }, { status: 200 });
+    } catch (err) {
+        return NextResponse.json({ message: err.message }, { status: 500 });
+    }
+}
+
 // CREATE NEW TENANT
 export async function POST(req, res) {
     try {
