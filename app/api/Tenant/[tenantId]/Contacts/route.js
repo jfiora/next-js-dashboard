@@ -34,7 +34,7 @@ export async function POST(req, res) {
         contact = await Contact.create({ tenantId, firstName, lastName, phone });
 
         return NextResponse.json({ contact }, { status: 201 });
-        
+
     } catch (err) {
         return NextResponse.json({ message: err.message || "Server error" });
     }
