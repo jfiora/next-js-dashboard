@@ -3,10 +3,10 @@ import Contact from '@/app/models/contact';
 import { NextResponse } from 'next/server';
 
 // GET ALL CONTACTS BY TenantId
-export async function GET(req) {
+export async function GET(req, res) {
     try {
         await connectMongoDb();
-        const { tenantId } = req.params
+        const { tenantId } = res.params
         if (!tenantId)
             throw new Error("TenantId not valid");
 
